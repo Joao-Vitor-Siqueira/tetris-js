@@ -1,0 +1,314 @@
+:root{
+    --multiplier: 4;
+    --fieldHeight: 180px;
+    --fieldWidth: 120px;
+    --sHeight: 10px;
+    --sWidth: 10px;
+}
+
+@font-face {
+    font-family: snes;
+    src: url(assets/fonts/snes.otf);
+}
+@font-face {
+    font-family: snesBold;
+    src: url(assets/fonts/snesBold.otf)
+}
+
+@keyframes sizeAnimation {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: snes;
+    overflow: hidden;
+    letter-spacing: .2rem;
+}
+
+img{
+    filter: brightness(.3);
+    width: 100vw;
+    height: 100vh;
+}
+
+.gameContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.field{
+    height: calc(var(--fieldHeight) * var(--multiplier));
+    width: calc(var(--fieldWidth) * var(--multiplier));
+    border-top: 0;
+    display: grid;
+    grid-template-columns: repeat(12,calc(var(--sHeight) * var(--multiplier)));
+}
+
+.square{
+    border: 1px solid black;
+    height: calc(var(--sHeight) * var(--multiplier));
+    width: calc(var(--sWidth) * var(--multiplier));
+    position: relative;
+}
+
+.square::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    border-radius: .1rem;
+    right: 10%;
+    top: 10%;
+    background-color: white;
+}
+
+.square::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    background-color: black;
+    opacity: .5;
+}
+
+.empty{
+    height: calc(var(--sHeight) * var(--multiplier));
+    width: calc(var(--sWidth) * var(--multiplier));
+    background-color: #000000fd;
+    border: 1px solid rgba(255, 255, 255, 0.149);
+}
+
+.wall{
+    height: calc(var(--sHeight) * var(--multiplier));
+    width: calc(var(--sWidth) * var(--multiplier));
+    background-color: #898989
+}
+
+.wall::before,.wall::after,.empty::before,.empty::after{
+    display: none;
+}
+
+.log{
+    height: calc(var(--fieldHeight) * var(--multiplier) / 2);
+    width: calc(var(--fieldWidth) * var(--multiplier));
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: #898989;
+    padding: 1rem;
+    font-family: snesBold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.log div{
+    text-align: center;
+    background-color: #5c5f5f;
+    border-radius: 1rem;
+    width: 90%;
+    color: white;
+    border: 1px solid black;
+}
+
+.log label{
+    color: #5c5f5f;
+}
+
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
+.blue{
+    background-color: blue;
+}
+.orange{
+    background-color: orange;
+}
+.yellow{
+    background-color: yellow;
+}
+.violet{
+    background-color: violet;
+}
+.seaGreen{
+    background-color: lightseagreen;
+}
+.fixed{
+    filter: brightness(.75);
+}
+.results{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 55vh;
+    width: 55vw;
+    background-color: #898989;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: snesBold;
+}
+.results h1{
+    color: red;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 3rem;
+}
+.results label{
+    font-size: 2rem;
+    color: #5c5f5f;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.results div{
+    background-color: #5c5f5f;
+    width: 80%;
+    border-radius: 1rem;
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    border: 1px solid black;
+}
+#hScoreResult{
+    position: relative;
+}
+#hScoreResult::after{
+    position: absolute;
+    right: 3%;
+    color: orange;
+    content: 'New!';
+    animation: sizeAnimation 1s infinite;
+    transform-origin: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.false::after{
+    display: none;
+}
+.hidden{
+    display: none;
+}
+button{
+    font-size: 2rem;
+    border-radius: 1rem;
+    background-color: #5c5f5f;
+    color: white;
+    padding: .5rem;
+    border: 1px solid black;
+    transition: 50ms;
+}
+button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    filter: brightness(.8);
+}
+button:active{
+    transform: scale(1);
+}
+
+@media(max-width: 1200px){
+    :root{
+        --multiplier: 3;
+    } 
+    .results{
+        width: 70vw;
+    }
+}
+
+@media(max-width: 900px),(max-height: 850px){
+    :root{
+        --multiplier: 2.5;
+    }
+    .gameContainer{
+        gap: 2rem;
+    }
+    
+}
+
+@media(max-width: 800px){
+    
+    .log{
+        font-size: 1.5rem;
+    }
+    .gameContainer{
+        flex-direction: column;
+        width: 100vw;
+        gap: 1rem
+    }
+    .results{
+        width: 80vw;
+    }
+}
+
+@media(max-width: 650px),(max-height: 650px){
+    .results div{
+        font-size: 2rem;
+    }
+    .results h1{
+        font-size: 2.5rem;
+    }
+    .results button{
+        font-size: 1.5rem;
+    }
+}
+
+@media(max-width: 500px),(max-height: 500px){
+    .results div{
+        font-size: 1.5rem;
+    }
+    .results h1{
+        font-size: 2rem;
+    }
+}
+
+
+@media(max-height: 800px){
+    .log{
+        font-size: 1.5rem;
+    }
+    .results{
+        height: 80vh;
+    }
+}
+
+@media(max-height: 750px){
+    :root{
+        --multiplier : 2.5;
+    }
+    .gameContainer{
+        flex-direction: row;
+        width: unset;      
+    }
+}
+
+@media(max-height: 500px){
+    :root{
+        --multiplier : 2;
+    }
+}

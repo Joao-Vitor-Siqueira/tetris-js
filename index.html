@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <img src="assets/imgs/tetris.jpg" alt="">
+    
+    <div class="results hidden" id="results">
+        <h1>Game Over</h1>
+        
+        <label for="lines">Lines</label>
+        <div id="lines"></div>
+        
+        <label for="scoreResult">Score</label>
+        <div id="scoreResult" name = "scoreResult"></div>
+        
+        <label for="hScoreResult">HighScore</label>
+        <div class="false" id="hScoreResult" name = "hScoreResult"></div>
+        
+        <button id="replay">Play again?</button>
+    </div>
+    
+    <div id="gameScreen" class="gameContainer">
+        <div class="field" id="field"></div>
+        <div class="log" id="log">
+            <label for="score">Score</label>
+            <div id="score" name = "score"></div>
+            <label for="hScore">HighScore</label>
+            <div id="hScore" name = "hScore"></div>
+        </div>
+    </div>   
+</body>
+</html>
