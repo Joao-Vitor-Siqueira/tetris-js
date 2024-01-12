@@ -1,6 +1,6 @@
 # tetris-js
 
-A simple clone of the classic `Tetris` game made with HTML/CSS/JS.
+A simple `Tetris` game made with HTML/CSS/JS.
 
 ![GIF demo](assets/imgs/tetrisJs.gif)
 
