@@ -4,6 +4,8 @@ A simple `Tetris` game made with HTML/CSS/JS.
 
 ![GIF demo](assets/imgs/tetrisJs.gif)
 
+Read this in other languages: [Português](README.PT.md).
+
 ## Getting Started
 
 To run this project locally, follow these simple steps:
